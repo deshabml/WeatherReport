@@ -11,6 +11,12 @@
 		DD061DAC2A1783E3003DFE73 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD061DAB2A1783E3003DFE73 /* ContentView.swift */; };
 		DD061DAE2A1783E5003DFE73 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DD061DAD2A1783E5003DFE73 /* Assets.xcassets */; };
 		DD061DB12A1783E5003DFE73 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DD061DB02A1783E5003DFE73 /* Preview Assets.xcassets */; };
+		DD061DBC2A178A96003DFE73 /* WeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD061DBB2A178A95003DFE73 /* WeatherView.swift */; };
+		DD061DBF2A178B8F003DFE73 /* NetworkServiceAA.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD061DBE2A178B8F003DFE73 /* NetworkServiceAA.swift */; };
+		DD061DC12A178BF5003DFE73 /* URLManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD061DC02A178BF5003DFE73 /* URLManager.swift */; };
+		DD061DC32A178CD6003DFE73 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD061DC22A178CD6003DFE73 /* NetworkError.swift */; };
+		DD061DC72A1790EA003DFE73 /* WeatherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD061DC62A1790EA003DFE73 /* WeatherViewModel.swift */; };
+		DD061DCA2A17915E003DFE73 /* WeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD061DC92A17915E003DFE73 /* WeatherData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +25,12 @@
 		DD061DAB2A1783E3003DFE73 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		DD061DAD2A1783E5003DFE73 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DD061DB02A1783E5003DFE73 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		DD061DBB2A178A95003DFE73 /* WeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherView.swift; sourceTree = "<group>"; };
+		DD061DBE2A178B8F003DFE73 /* NetworkServiceAA.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceAA.swift; sourceTree = "<group>"; };
+		DD061DC02A178BF5003DFE73 /* URLManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLManager.swift; sourceTree = "<group>"; };
+		DD061DC22A178CD6003DFE73 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		DD061DC62A1790EA003DFE73 /* WeatherViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewModel.swift; sourceTree = "<group>"; };
+		DD061DC92A17915E003DFE73 /* WeatherData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,9 +63,12 @@
 		DD061DA82A1783E3003DFE73 /* WeatherReport */ = {
 			isa = PBXGroup;
 			children = (
-				DD061DA92A1783E3003DFE73 /* WeatherReportApp.swift */,
-				DD061DAB2A1783E3003DFE73 /* ContentView.swift */,
-				DD061DAD2A1783E5003DFE73 /* Assets.xcassets */,
+				DD061DB82A178A45003DFE73 /* Application */,
+				DD061DC82A179103003DFE73 /* Model */,
+				DD061DBA2A178A6F003DFE73 /* View */,
+				DD061DC52A1790C7003DFE73 /* ViewModel */,
+				DD061DBD2A178B6C003DFE73 /* Service */,
+				DD061DB92A178A5F003DFE73 /* Supporting files */,
 				DD061DAF2A1783E5003DFE73 /* Preview Content */,
 			);
 			path = WeatherReport;
@@ -65,6 +80,65 @@
 				DD061DB02A1783E5003DFE73 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		DD061DB82A178A45003DFE73 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				DD061DA92A1783E3003DFE73 /* WeatherReportApp.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		DD061DB92A178A5F003DFE73 /* Supporting files */ = {
+			isa = PBXGroup;
+			children = (
+				DD061DAD2A1783E5003DFE73 /* Assets.xcassets */,
+			);
+			path = "Supporting files";
+			sourceTree = "<group>";
+		};
+		DD061DBA2A178A6F003DFE73 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				DD061DAB2A1783E3003DFE73 /* ContentView.swift */,
+				DD061DBB2A178A95003DFE73 /* WeatherView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		DD061DBD2A178B6C003DFE73 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				DD061DC42A178D11003DFE73 /* Error */,
+				DD061DBE2A178B8F003DFE73 /* NetworkServiceAA.swift */,
+				DD061DC02A178BF5003DFE73 /* URLManager.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		DD061DC42A178D11003DFE73 /* Error */ = {
+			isa = PBXGroup;
+			children = (
+				DD061DC22A178CD6003DFE73 /* NetworkError.swift */,
+			);
+			path = Error;
+			sourceTree = "<group>";
+		};
+		DD061DC52A1790C7003DFE73 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				DD061DC62A1790EA003DFE73 /* WeatherViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		DD061DC82A179103003DFE73 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				DD061DC92A17915E003DFE73 /* WeatherData.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,7 +211,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DD061DBC2A178A96003DFE73 /* WeatherView.swift in Sources */,
 				DD061DAC2A1783E3003DFE73 /* ContentView.swift in Sources */,
+				DD061DBF2A178B8F003DFE73 /* NetworkServiceAA.swift in Sources */,
+				DD061DC72A1790EA003DFE73 /* WeatherViewModel.swift in Sources */,
+				DD061DC32A178CD6003DFE73 /* NetworkError.swift in Sources */,
+				DD061DC12A178BF5003DFE73 /* URLManager.swift in Sources */,
+				DD061DCA2A17915E003DFE73 /* WeatherData.swift in Sources */,
 				DD061DAA2A1783E3003DFE73 /* WeatherReportApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
