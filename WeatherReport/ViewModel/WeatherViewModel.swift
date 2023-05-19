@@ -12,27 +12,19 @@ class WeatherViewModel: ObservableObject {
     @Published var weatherData: WeatherData?
     @Published var city: String = ""
 
-//    init() {
-//        Task {
-//            let data = try await NetworkServiceAA.shared.getWeatherData(city: "volgograd")
-//            DispatchQueue.main.async {
-//                self.weatherData = data
-//            }
-//        }
-//    }
-
     func loadScreen() {
-        Task {
-            let data = try await NetworkServiceAA.shared.getWeatherData(city: "volgograd")
-            DispatchQueue.main.async {
-                self.weatherData = data
-                self.setupCityText()
-            }
-        }
+        loadFirstSity()
+        setupCityText()
+        getData()
     }
 
-    func setupCityText() {
-        self.city = weatherData?.name ?? "-"
+    func getData() {
+        Task {
+            let data = try await NetworkServiceAA.shared.getWeatherData(city: city)
+            DispatchQueue.main.async {
+                self.weatherData = data
+            }
+        }
     }
 
     func tempDescription(_ temp: Double?) -> String {
@@ -72,4 +64,24 @@ class WeatherViewModel: ObservableObject {
         return str
     }
     
+}
+
+extension WeatherViewModel {
+
+    func setupCityText() {
+        city = DataService.shared.city ?? "-"
+    }
+
+    func saveCity() {
+        DataService.shared.saveCity(city) {}
+    }
+
+    func loadFirstSity() {
+        if let first = DataService.shared.firstTime, !first {
+            city = "moscow"
+            saveCity()
+            DataService.shared.firstTimeFalse(true)
+        }
+    }
+
 }

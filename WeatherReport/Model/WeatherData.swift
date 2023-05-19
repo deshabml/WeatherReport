@@ -45,14 +45,14 @@ struct WeatherData: Identifiable, Decodable {
         let tempMax: Double
         let pressure: Int
         let humidity: Int
-//        let seaLevel: Int
-//        let grndLevel: Int
+        let seaLevel: Int?
+        let grndLevel: Int?
     }
 
     struct Wind: Decodable {
         let speed: Double
         let deg: Int
-//        let gust: Double
+        let gust: Double?
     }
 
 }

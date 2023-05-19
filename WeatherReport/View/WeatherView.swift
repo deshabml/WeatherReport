@@ -24,7 +24,8 @@ struct WeatherView: View {
                             .background(
                                 Color("DarkSea").blur(radius: 10))
                         Button {
-                            print("5656")
+                            viewModel.saveCity()
+                            viewModel.getData()
                             isChoosingCity.toggle()
                         } label: {
                             Image(systemName: "checkmark")
