@@ -16,7 +16,6 @@ class NetworkServiceAA {
     func getWeatherData(city: String) async throws -> WeatherData {
         guard let url = URLManager.shared.createURL(city: city,
                                                     endpoint: .currentWeather) else { throw NetworkError.badUrl }
-        print(url)
         let response = try await URLSession.shared.data(from: url)
         let data = response.0
 
@@ -28,6 +27,26 @@ class NetworkServiceAA {
         } catch {
             throw NetworkError.invalidDecoding
         }
+    }
+
+    func checkCity(city: CityQuery) async throws -> [String] {
+        guard let url = URL(string: "https://suggestions.dadata.ru/suggestions/api/4_1/rs/suggest/address") else {  throw NetworkError.badUrl }
+        let encoder = JSONEncoder()
+        do {
+            let body = try encoder.encode(city)
+            do {
+                var req = URLRequest(url: url)
+                req.httpMethod = "POST"
+                req.setValue("application/json" ,forHTTPHeaderField: "Content-type")
+                req.setValue("application/json" ,forHTTPHeaderField: "Accept")
+                req.setValue("Token 224925d20efc9ab248696b162dfb8e4d70571825" ,forHTTPHeaderField: "Authorization")
+                req.httpBody = body
+                let response = try await URLSession.shared.data(for: req)
+                let data = response.0
+                let itog = ParsingService.shared.users(from: data) ?? []
+                return itog
+            } catch { throw error }
+        } catch { throw error }
     }
 
 }

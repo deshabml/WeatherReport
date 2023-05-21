@@ -33,9 +33,8 @@ class DataService {
 
     private init() { }
 
-    func saveCity(_ city: String, completion: () -> ()) {
+    func saveCity(_ city: String) {
         userDefaults.set(city, forKey: cityKey)
-        completion()
     }
 
 }

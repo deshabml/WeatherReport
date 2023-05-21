@@ -10,7 +10,16 @@ import Foundation
 class WeatherViewModel: ObservableObject {
 
     @Published var weatherData: WeatherData?
-    @Published var city: String = ""
+    @Published var city: String = "" {
+        didSet {
+            checkCity(text: city)
+        }
+    }
+    @Published var isChoosingCity = false
+    @Published var citys: [String] = []
+    var isCityExists: Bool {
+        citys.count > 0
+    }
 
     func loadScreen() {
         loadFirstSity()
@@ -72,14 +81,31 @@ extension WeatherViewModel {
         city = DataService.shared.city ?? "-"
     }
 
-    func saveCity() {
-        DataService.shared.saveCity(city) {}
+    func checkCity(text: String) {
+        DataService.shared.saveCity(city)
+        Task {
+            do {
+                let data = try await NetworkServiceAA.shared.checkCity(city: CityQuery(query: text, count: 5))
+                DispatchQueue.main.async {
+                    self.citys = data
+                }
+                print(data)
+            } catch {
+                print(error)
+            }
+        }
+    }
+
+    func saveCity(city: String) {
+        self.city = city
+        DataService.shared.saveCity(city)
+        getData()
     }
 
     func loadFirstSity() {
         if let first = DataService.shared.firstTime, !first {
             city = "moscow"
-            saveCity()
+            saveCity(city: city)
             DataService.shared.firstTimeFalse(true)
         }
     }
