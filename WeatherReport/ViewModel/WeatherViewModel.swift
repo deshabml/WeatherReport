@@ -17,7 +17,7 @@ class WeatherViewModel: ObservableObject {
     }
     @Published var isChoosingCity = false
     @Published var citys: [String] = []
-    @Published var statistics: [(min: Double, max: Double)] = []
+    @Published var statistics: [(min: Double, max: Double, pop: Int, utc: Int)] = []
     var isCityExists: Bool {
         citys.count > 0
     }
@@ -92,7 +92,6 @@ extension WeatherViewModel {
                 DispatchQueue.main.async {
                     self.citys = data
                 }
-                print(data)
             } catch {
                 print(error)
             }
@@ -145,6 +144,14 @@ extension WeatherViewModel {
     func paddingTemp(index: Int) -> Double {
         let oneDegree = 200 / (maxStatistic() - minStatistic())
         return (statistics[index].min - minStatistic()) * oneDegree
+    }
+
+    func weekDay(index: Int) -> String {
+        let date = Date(timeIntervalSince1970: TimeInterval(statistics[index].utc))
+        let celendar = Calendar.current
+        let weekDayNumber = celendar.component(.weekday, from: date)
+        let weekDays = ["", "ВС", "ПН", "ВТ", "СР", "ЧТ", "ПТ", "СБ"]
+        return weekDays[weekDayNumber]
     }
 
 }
