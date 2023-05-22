@@ -18,7 +18,7 @@ struct StatisticTempListView: View {
                         Text("\(mainViewModel.weekDay(index: index))")
                             .frame(width: 30)
                         Text("\(mainViewModel.statistics[index].pop)%")
-                            .frame(width: 35)
+                            .frame(width: 45)
                         Text("\(mainViewModel.tempDescription(mainViewModel.statistics[index].min))")
                             .frame(width: 40)
                         ZStack(alignment: .leading) {
