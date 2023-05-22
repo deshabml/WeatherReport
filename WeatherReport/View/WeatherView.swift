@@ -46,11 +46,8 @@ struct WeatherView: View {
                         Text("Закат:\n\(viewModel.getTime(utc: viewModel.weatherData?.sys.sunset))")
                             .padding()
                     }.frame(maxWidth: .infinity)
-                    List {
-                        Text("")
-                            .listRowBackground(Color.clear)
-                    }
-                    .listStyle(.plain)
+                    StatisticTempListView()
+                        .environmentObject(viewModel)
                 }
                 CheckListCitysView()
                     .environmentObject(viewModel)

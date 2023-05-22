@@ -18,7 +18,6 @@ class NetworkServiceAA {
                                                     endpoint: .currentWeather) else { throw NetworkError.badUrl }
         let response = try await URLSession.shared.data(from: url)
         let data = response.0
-
         let decoder = JSONDecoder()
         decoder.keyDecodingStrategy = .convertFromSnakeCase
         do {
@@ -43,10 +42,19 @@ class NetworkServiceAA {
                 req.httpBody = body
                 let response = try await URLSession.shared.data(for: req)
                 let data = response.0
-                let itog = ParsingService.shared.users(from: data) ?? []
+                guard let itog = ParsingService.shared.users(from: data) else { throw NetworkError.invalidDecoding }
                 return itog
             } catch { throw error }
         } catch { throw error }
+    }
+
+    func getStatistics(weatherData: WeatherData) async throws -> [(min: Double, max: Double)] {
+        guard let url = URLManager.shared.createOnecallURL(weatherData: weatherData, endpoint: .currentOnecall) else { throw NetworkError.badUrl }
+        print(url)
+        let response = try await URLSession.shared.data(from: url)
+        let data = response.0
+        guard let itog = ParsingService.shared.statistics(from: data) else { throw NetworkError.invalidDecoding }
+        return itog
     }
 
 }

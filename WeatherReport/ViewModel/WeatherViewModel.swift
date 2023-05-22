@@ -17,6 +17,7 @@ class WeatherViewModel: ObservableObject {
     }
     @Published var isChoosingCity = false
     @Published var citys: [String] = []
+    @Published var statistics: [(min: Double, max: Double)] = []
     var isCityExists: Bool {
         citys.count > 0
     }
@@ -30,8 +31,10 @@ class WeatherViewModel: ObservableObject {
     func getData() {
         Task {
             let data = try await NetworkServiceAA.shared.getWeatherData(city: city)
+            let statisticData = try await NetworkServiceAA.shared.getStatistics(weatherData: data)
             DispatchQueue.main.async {
                 self.weatherData = data
+                self.statistics = statisticData
             }
         }
     }
@@ -97,8 +100,12 @@ extension WeatherViewModel {
     }
 
     func saveCity(city: String) {
-        self.city = city
-        DataService.shared.saveCity(city)
+        if city == "Saint-Petersburg" {
+            self.city = "Petersburg"
+        } else {
+            self.city = city
+        }
+        DataService.shared.saveCity(self.city)
         getData()
     }
 
@@ -108,6 +115,36 @@ extension WeatherViewModel {
             saveCity(city: city)
             DataService.shared.firstTimeFalse(true)
         }
+    }
+
+    func minStatistic() -> Double {
+        var min = statistics[0].min
+        for index in 0 ..< statistics.count {
+            if statistics[index].min < min {
+                min = statistics[index].min
+            }
+        }
+        return min
+    }
+
+    func maxStatistic() -> Double {
+        var max = statistics[0].max
+        for index in 0 ..< statistics.count {
+            if statistics[index].max > max {
+                max = statistics[index].max
+            }
+        }
+        return max
+    }
+
+    func widthDeyTemp(index: Int) -> Double {
+        let ratio = (maxStatistic() - minStatistic()) / (statistics[index].max - statistics[index].min)
+        return 200 / ratio
+    }
+
+    func paddingTemp(index: Int) -> Double {
+        let oneDegree = 200 / (maxStatistic() - minStatistic())
+        return (statistics[index].min - minStatistic()) * oneDegree
     }
 
 }

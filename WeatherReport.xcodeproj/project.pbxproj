@@ -23,6 +23,8 @@
 		DD061DD52A18FFED003DFE73 /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = DD061DD42A18FFED003DFE73 /* SwiftyJSON */; };
 		DDB769872A1A9A4D004008D4 /* ParsingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB769862A1A9A4D004008D4 /* ParsingService.swift */; };
 		DDB769892A1ABDB4004008D4 /* CheckListCitysView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB769882A1ABDB4004008D4 /* CheckListCitysView.swift */; };
+		DDB7698C2A1BA8BB004008D4 /* PaddingLeft&Right.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB7698B2A1BA8BB004008D4 /* PaddingLeft&Right.swift */; };
+		DDB7698E2A1BAD30004008D4 /* StatisticTempListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB7698D2A1BAD30004008D4 /* StatisticTempListView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +44,8 @@
 		DD061DD12A18FE80003DFE73 /* CityQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityQuery.swift; sourceTree = "<group>"; };
 		DDB769862A1A9A4D004008D4 /* ParsingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParsingService.swift; sourceTree = "<group>"; };
 		DDB769882A1ABDB4004008D4 /* CheckListCitysView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckListCitysView.swift; sourceTree = "<group>"; };
+		DDB7698B2A1BA8BB004008D4 /* PaddingLeft&Right.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PaddingLeft&Right.swift"; sourceTree = "<group>"; };
+		DDB7698D2A1BAD30004008D4 /* StatisticTempListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticTempListView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +80,7 @@
 			isa = PBXGroup;
 			children = (
 				DD061DB82A178A45003DFE73 /* Application */,
+				DDB7698A2A1BA86A004008D4 /* Core */,
 				DD061DC82A179103003DFE73 /* Model */,
 				DD061DBA2A178A6F003DFE73 /* View */,
 				DD061DC52A1790C7003DFE73 /* ViewModel */,
@@ -170,8 +175,17 @@
 			children = (
 				DD061DCE2A18FB3C003DFE73 /* CityView.swift */,
 				DDB769882A1ABDB4004008D4 /* CheckListCitysView.swift */,
+				DDB7698D2A1BAD30004008D4 /* StatisticTempListView.swift */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		DDB7698A2A1BA86A004008D4 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				DDB7698B2A1BA8BB004008D4 /* PaddingLeft&Right.swift */,
+			);
+			path = Core;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -250,8 +264,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DDB7698C2A1BA8BB004008D4 /* PaddingLeft&Right.swift in Sources */,
 				DD061DCD2A17CA40003DFE73 /* DataService.swift in Sources */,
 				DD061DCF2A18FB3C003DFE73 /* CityView.swift in Sources */,
+				DDB7698E2A1BAD30004008D4 /* StatisticTempListView.swift in Sources */,
 				DD061DBC2A178A96003DFE73 /* WeatherView.swift in Sources */,
 				DDB769892A1ABDB4004008D4 /* CheckListCitysView.swift in Sources */,
 				DD061DAC2A1783E3003DFE73 /* ContentView.swift in Sources */,

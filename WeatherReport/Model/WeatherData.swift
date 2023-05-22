@@ -19,6 +19,7 @@ struct WeatherData: Identifiable, Decodable {
     let weather: [Weather]
     let clouds: Clouds
     let main: Main
+    let coord: Coord
     let wind: Wind
     let sys: Sys
 
@@ -36,6 +37,11 @@ struct WeatherData: Identifiable, Decodable {
 
     struct Clouds: Decodable {
         let all: Int
+    }
+
+    struct Coord: Decodable {
+        let lat: Double
+        let lon : Double
     }
 
     struct Main: Decodable {

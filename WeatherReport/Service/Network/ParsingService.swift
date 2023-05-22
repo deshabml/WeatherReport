@@ -27,4 +27,16 @@ class ParsingService {
         return Array(Set(citys))
     }
 
+    func statistics(from data: Data) -> [(min: Double, max: Double)]? {
+        guard let json = try? JSON(data: data) else { return nil }
+        var itog: [(min: Double, max: Double)] = []
+        let jsons = json["daily"]
+        for index in 0 ..< jsons.count {
+            let min = jsons[index]["temp"]["min"].double ?? 0
+            let max = jsons[index]["temp"]["max"].double ?? 0
+            itog.append((min, max))
+        }
+        return itog
+    }
+
 }
