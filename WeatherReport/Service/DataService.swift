@@ -10,13 +10,10 @@ import Foundation
 class DataService {
 
     static let shared = DataService()
-
     private let userDefaults = UserDefaults.standard
-
     let cityKey = "Contacts"
-
     let firstTimeKey = "FirstTime"
-
+    
     var city: String? {
         let city = userDefaults.string(forKey: cityKey)
         return city
@@ -27,11 +24,11 @@ class DataService {
         return first
     }
 
+    private init() { }
+
     func firstTimeFalse(_ firstTime: Bool) {
         userDefaults.set(firstTime, forKey: firstTimeKey)
     }
-
-    private init() { }
 
     func saveCity(_ city: String) {
         userDefaults.set(city, forKey: cityKey)

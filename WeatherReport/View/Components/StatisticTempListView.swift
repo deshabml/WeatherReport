@@ -23,14 +23,14 @@ struct StatisticTempListView: View {
                             .frame(width: 40)
                         ZStack(alignment: .leading) {
                             Rectangle()
-                                .frame(width: 200, height: 30)
+                                .frame(width: 200, height: 25)
                                 .cornerRadius(15)
                                 .foregroundColor(.gray)
                                 .padding(.left, 0)
                             Rectangle()
-                                .frame(width: CGFloat(mainViewModel.widthDeyTemp(index: index)), height: 30)
+                                .frame(width: CGFloat(mainViewModel.widthDeyTemp(index: index)), height: 25)
                                 .cornerRadius(15)
-                                .foregroundColor(.blue)
+                                .foregroundColor(Color("CastumBlue"))
                                 .padding(.left, CGFloat(mainViewModel.paddingTemp(index: index)))
                         }
                         Text("\(mainViewModel.tempDescription(mainViewModel.statistics[index].max))")
